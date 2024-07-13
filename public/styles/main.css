@@ -1,0 +1,132 @@
+html {
+    background-color: #e4e9fd;
+    background-image: -webkit-linear-gradient(65deg, #83c3e3 50%, #e4e9fd 50%);
+    min-height: 1000px;
+    font-size: 18px;
+}
+
+body {
+    font-family: 'Roboto',
+        sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+header#masthead { 
+    color: #000000;
+    padding: 1em 0;
+    text-align: center;
+}
+
+header#masthead a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100% - 62px);
+    /* Adjust the height to exclude the header */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+main header h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+main header p {
+    font-size: 1.1em;
+    margin-bottom: 1.5em;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.box {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 15px;
+    width: 100%;
+    
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.link-unstyled {
+    color: black;
+    text-decoration: none;
+}
+
+.link-unstyled:hover,
+.link-unstyled:focus,
+.link-unstyled:active {
+    color: black;
+    text-decoration: none;
+}
+
+.poster {
+    width: auto;
+    height: 350px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+#sorters {
+    font-size: 1em;
+    margin-bottom: 1.5em;
+}
+
+#sorters a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+#sorters a:hover {
+    text-decoration: underline;
+}
+
+p {
+    margin: 0.5em 0;
+}
+
+a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 2em 0;
+}
+
+footer {
+    flex: 0 0 auto;
+    color: rgb(6, 0, 0);
+    text-align: center;
+}

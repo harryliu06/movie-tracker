@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= series.name %> Details
+    </title>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .detail_name {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .detail_p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+            line-height: 1.6;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail_img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .genres {
+            margin-top: 10px;
+        }
+
+        .genres span {
+            display: inline-block;
+            background-color: #0dd148;
+            color: white;
+            padding: 5px 10px;
+            margin-right: 5px;
+            border-radius: 4px;
+        }
+
+        .genres span:hover {
+            background-color: #15b580;
+        }
+
+
+        a {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #0dd148;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: #15b580;
+        }
+
+        a:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    </style>
+
+<body>
+    <h1 class = "detail_name">
+        <%= series.name %>
+    </h1>
+    <div class="detail_p">
+        <p><strong>Overview:</strong>
+            <%= series.overview %>
+        </p>
+        <p><strong>Rating:</strong>
+            <%= series.vote_average %>
+        </p>
+        <p><strong>First Air Date:</strong>
+            <%= new Date(series.first_air_date).toISOString().split('T')[0] %>
+        </p>
+        <div class="genres">
+            <p><strong>Genres:</strong>
+                <% if (genres && genres.length> 0) { %>
+                    <% genres.forEach(genre=> { %>
+                        <span>
+                            <%= genre %>
+                        </span>
+                        <% }); %>
+                            <% } else { %>
+                                <span>No genres available</span>
+                                <% } %>
+            </p>
+        </div>
+    </div>
+    
+    <img src="https://image.tmdb.org/t/p/w500<%= series.poster_path %>" alt="<%= series.name %>" class = "detail_img">
+    <br>
+    <a href="/">Back to list</a>
+</body>
+
+</html>

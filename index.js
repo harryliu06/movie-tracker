@@ -3,12 +3,10 @@ import bodyParser from "body-parser";
 import express from "express";
 import pg from "pg";
 import "dotenv/config";
-import dns from "dns";
 
 const db = new pg.Pool({
   connectionString: process.env.SUPABASE_URL,
   ssl: { rejectUnauthorized: false },
-  lookup: (hostname, opts, cb) => dns.lookup(hostname, { family: 4 }, cb), // Force IPv4 for the database host
 });
 
 const SERIES_API_URL =
@@ -181,4 +179,5 @@ app.get("/movies/:id", async (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+  console.log("DB host:", new URL(process.env.SUPABASE_URL).host);
 });

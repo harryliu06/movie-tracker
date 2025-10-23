@@ -4,12 +4,9 @@ import express from "express";
 import pg from "pg";
 import "dotenv/config";
 
-const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "movie_tracker",
-  password: `${process.env.PG_KEY}`,
-  port: 5432,
+const db = new pg.Pool({
+  connectionString: process.env.SUPABASE_URL,
+  ssl: { rejectUnauthorized: false },
 });
 
 const SERIES_API_URL =

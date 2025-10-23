@@ -104,13 +104,15 @@ app.get("/", async (req, res) => {
       `SELECT * FROM movies ${movies_order_clause}`
     );
 
-    res.render("index.ejs", { series, movies });
+    console.log(sort_choice)
+    res.render("index.ejs", { series, movies, sort_choice });
   } catch (error) {
     console.error("Failed to make request:", error.message);
     res.render("index.ejs", {
       error: error.message,
       series: [],
       movies: [],
+      sort_choice: "default",
     });
   }
 });

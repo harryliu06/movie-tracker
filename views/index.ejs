@@ -1,65 +1,85 @@
 <%- include('partials/header.ejs'); -%>
-    
-</head>
 
-<body id="movielist">
-    <header id="masthead"><a href="/" title="movie_tracker">Movie Tracker</a></header>
-    <main>
-        <header>
-            
-            <p>Tiny summary but <strong>detailed notes for each</strong>. <strong>This page will constantly update as I watch more</strong>, so mark
-                it if you want to check back in a few months.</p>
-        </header>
-        <p id=sorters>Sorted with <strong>my top recommendations up top</strong>. Sort by
-            <a href="/?sort=title" id=sort-title>title</a>,
-            <a href="/?sort=date" id=sort-date>newest</a>, or 
-            <a href="/?sort=rating" id=sort-rating>best</a>.
-        <p>
-            If you have any questions, you can also <a href="mailto: hydroomega90@gmail.com">email me</a>.
-        <hr>
-        
-        <h2>Series I've Watched</h2>
-        <div class="container">
-            <% if (locals.series){ %>
-            <% series.forEach((serie)=> { %>
-                <a href="/series/<%= serie.series_id %>" class="box link-unstyled">
-                    <img src="https://image.tmdb.org/t/p/original<%= serie.poster_path %>" alt="<%= serie.name %> poster" class="poster">
-                    <div class="details">
-                        <h3>
-                            <%= serie.name %>
-                        </h3>
+    </head>
 
-                        <p><strong>Overview:</strong> <%= serie.overview %>
-                        </p>
-                    </div>
-                    
-                </a>
-                <% }) %>
-            <% } %>
+    <body id="movielist">
+        <header id="masthead"><a href="/" title="movie_tracker">Movie Tracker</a></header>
+        <main>
+            <header>
 
-        <hr>
-        
-        <h2>Movies I've Watched</h2>
+                <p>Tiny summary but <strong>detailed notes for each</strong>. <strong>This page will constantly update
+                        as I watch more</strong>, so mark
+                    it if you want to check back in a few months.</p>
+            </header>
 
-            <% if (locals.movies){ %>
-                <% movies.forEach((movie)=> { %>
-                    <a href="/movies/<%= movie.movie_id %>" class="box link-unstyled">
-                        <img src="https://image.tmdb.org/t/p/original<%= movie.poster_path %>" alt="<%= movie.name %> poster"
-                            class="poster">
-                        <div class="details">
-                            <h3>
-                                <%= movie.title %>
-                            </h3>
-                            <p><strong>Overview:</strong>
-                                <%= movie.overview %>
-                            </p>
-                        </div>
-            
-                    </a>
-                <% }) %>
-            <% } %>
-        </div>
-    </main>
-</body>
+            <p>If you have any questions, you can also <a href="mailto: harryliu718@gmail.com">email me</a>.</p>
+            <hr>
 
-<%- include('partials/footer.ejs'); -%>
+            <div class="dropdown-section">
+                <label class="label">Sort by:</label>
+                <div class="dropdown-minimal">
+                    <select id="sort">
+                        <option value="title" <%=sort_choice==='title' ? 'selected' : '' %>>Title</option>
+                        <option value="date" <%=sort_choice==='date' ? 'selected' : '' %>>Newest</option>
+                        <option value="rating" <%=sort_choice==='rating' ? 'selected' : '' %>>Best</option>
+                    </select>
+                </div>
+            </div>
+            <h2>Series I've Watched</h2>
+            <div class="container">
+                <% if (locals.series){ %>
+                    <% series.forEach((serie)=> { %>
+                        <a href="/series/<%= serie.series_id %>" class="box link-unstyled">
+                            <img src="https://image.tmdb.org/t/p/original<%= serie.poster_path %>"
+                                alt="<%= serie.name %> poster" class="poster">
+                            <div class="details">
+                                <h3>
+                                    <%= serie.name %>
+                                </h3>
+
+                                <p><strong>Overview:</strong>
+                                    <%= serie.overview %>
+                                </p>
+                            </div>
+
+                        </a>
+                        <% }) %>
+                            <% } %>
+
+                                <hr>
+
+                                <h2>Movies I've Watched</h2>
+
+                                <% if (locals.movies){ %>
+                                    <% movies.forEach((movie)=> { %>
+                                        <a href="/movies/<%= movie.movie_id %>" class="box link-unstyled">
+                                            <img src="https://image.tmdb.org/t/p/original<%= movie.poster_path %>"
+                                                alt="<%= movie.name %> poster" class="poster">
+                                            <div class="details">
+                                                <h3>
+                                                    <%= movie.title %>
+                                                </h3>
+                                                <p><strong>Overview:</strong>
+                                                    <%= movie.overview %>
+                                                </p>
+                                            </div>
+
+                                        </a>
+                                        <% }) %>
+                                            <% } %>
+            </div>
+        </main>
+    </body>
+
+    <script>
+        const s = document.getElementById("sort");
+
+        s.addEventListener("change", function () {
+            const u = new URL(window.location);
+            u.searchParams.set("sort", sort.value);
+            window.location.href = u.toString();
+        });
+
+    </script>
+
+    <%- include('partials/footer.ejs'); -%>

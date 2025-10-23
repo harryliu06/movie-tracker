@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import express from "express";
 import pg from "pg";
 import "dotenv/config";
-import dns from "dns":
+import dns from "dns";
 
 dns.setDefaultResultOrder("ipv4first");
 

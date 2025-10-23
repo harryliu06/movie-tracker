@@ -7,6 +7,7 @@ import "dotenv/config";
 const db = new pg.Pool({
   connectionString: process.env.SUPABASE_URL,
   ssl: { rejectUnauthorized: false },
+  lookup: (hostname, opts, cb) => dns.lookup(hostname, { family: 4 }, cb), // Force IPv4 for the database host
 });
 
 const SERIES_API_URL =
